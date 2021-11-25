@@ -1,0 +1,6 @@
+.container {
+    display: flex;
+    overflow: scroll;
+    padding: 10px;
+    
+}

@@ -1,0 +1,28 @@
+.container {
+    height: 100%;
+}
+
+.tabs {
+    display: flex;
+    width: 141px;
+    justify-content: space-between;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 34px;
+    
+}
+
+.tabs span {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.tabs .active {
+    font-weight: 700;
+    font-size: 16px;
+    opacity: 1;
+}
+
+/* .cards {
+    dis
+} */

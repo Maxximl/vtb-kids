@@ -1,0 +1,25 @@
+.container {
+    height: 100%;
+    background-color: #3C79D2;
+   padding-left: 20px;
+   font-family: Raleway, sans-serif;
+}
+
+.header {
+  
+    font-weight: 700;
+    font-size: 21px;
+    color: white;
+    padding: 25px 0 15px 0;
+    margin-bottom: 0;
+}
+
+.cards__list > div {
+    margin-top: -60px;
+    height: 270px;
+}
+
+.cards__list > div:first-child {
+    margin-top: 0px;
+    height: 330px;
+}

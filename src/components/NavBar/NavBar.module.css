@@ -1,0 +1,26 @@
+.container {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container svg {
+    color: rgb(120, 171, 206);
+    font-size: 2.2rem;
+}
+
+.active {
+    background-color: red;
+}
+
+.container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

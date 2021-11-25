@@ -1,0 +1,49 @@
+.header {
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.row {
+    display: flex;
+    
+}
+
+.feature {
+    border-radius: 20px;
+    flex: 1;
+    font-size: 5vw;
+    padding: .5em;
+    background: white;
+    font-size: 15px;
+    font-family: Roboto;
+    margin-right: 15px;
+    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+-moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.feature:last-child {
+    margin-right: 0;
+}
+
+.grid {
+    padding: 15px;
+    display: grid;
+    grid-template-rows:100px 50px 70px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3vw;
+}
+
+.grid > div {
+ margin-right: 0;
+}
+
+.box4 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.row {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}

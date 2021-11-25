@@ -1,0 +1,14 @@
+.container {
+
+}
+.page__header {
+display: flex;
+align-items: center;
+padding-left: 10px;
+vertical-align: middle;
+margin-bottom: 0;
+}
+
+.content {
+    overflow-y: scroll;
+}
