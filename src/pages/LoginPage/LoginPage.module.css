@@ -1,0 +1,55 @@
+.container {
+    flex: 1;
+    color: #24292E;
+    padding: 80px 20px 0;
+    font-family: Mulish, sans-serif;
+    background: #FFFFFF;
+}
+
+.header {
+    font-size: 21px;
+    font-weight: 700;
+    height: 40px;
+}
+
+.login_type {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 40px;
+    font-weight: 700;
+}
+
+.login_type .login_type_login {
+    color: #767676;
+}
+
+.login_type .login_type_card {
+    color: #767676;
+}
+
+.tel {
+    margin-top: 15px;
+}
+
+.getCode {
+    color: #F1F2F6;
+    margin-top: 20px;
+}
+
+.smsCode {
+    margin-top: 60px;
+}
+
+.smsCode__caption {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.continue {
+    margin-top: 227px;
+    color: #F1F2F6;
+}
+
+.continue a {
+    color: #F1F2F6;
+}

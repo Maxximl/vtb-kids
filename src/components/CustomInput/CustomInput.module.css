@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    height: 60px;
+    border:  1px solid #7615F9;
+    padding: 5px 0 8px 19px;
+    display: flex;
+    align-items: flex-end;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    position: relative;
+}
+
+ input {
+    height: 26px;
+    border: none;
+    outline: none;
+   
+}
+
+label { 
+    position: absolute;
+    top: 17px;
+    color: #767676;
+    transition: all 0.3s ease-in;
+}
+
+ label.focused {
+    transform: translateY(-10px);
+}

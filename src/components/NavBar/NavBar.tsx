@@ -1,19 +1,19 @@
 import React from 'react'
 import styles from "./NavBar.module.css";
 import { NavLink } from 'react-router-dom';
-import { HomeOutlined, PeopleOutline, AccountBalanceWalletOutlined } from "@material-ui/icons"
+import { OtherHousesOutlined, PeopleAltOutlined, AccountBalanceWalletOutlined } from '@mui/icons-material';
 
 export const NavBar = () => {
     return (
         <div className={styles.container}>
 
             <NavLink to="/" >
-                <HomeOutlined />
+                <OtherHousesOutlined />
             </NavLink>
             <NavLink to="/chats" >
-                <PeopleOutline />
+                <PeopleAltOutlined />
             </NavLink>
-            <NavLink to="/test"  >
+            <NavLink to="/wallets"  >
                 < AccountBalanceWalletOutlined />
             </NavLink>
 

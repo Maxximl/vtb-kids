@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "https://jsonplaceholder.typicode.com/comments",
+    baseURL: "http://84.201.148.231:8008",
     responseType: "json"
 });

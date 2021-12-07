@@ -1,0 +1,78 @@
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+}
+
+.page {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #F1F2F6;
+    font-family: Inter, sans-serif;
+}
+
+h1 {
+    margin: auto;
+    color: #F1F2F6;
+    font-size: 36px;
+    font-weight: 900;
+    text-align: center;
+}
+
+
+.instruction {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 154px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 316px 20px 0;
+}
+
+.stepProgress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+ 
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 9px;
+}
+
+.dot.current {
+background-color: #F1F2F6;;
+}
+
+.continueButton {
+    margin: 0 17px;
+    margin-top: 64px;
+}
+
+.continueButton a {
+    color: #F1F2F6;
+}
+
+
+.noAccMessage {
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.createAccButton {
+    margin: 0 18px;
+    margin-top: 20px;
+}

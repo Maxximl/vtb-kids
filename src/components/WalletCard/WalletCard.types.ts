@@ -6,4 +6,10 @@ export interface IWalletCardProps {
     balanceForecast: number;
     totalMoneyBox: number;
     avatar: string;
+    // type?: WalletType;
+}
+
+export enum WalletType {
+    Chilren,
+    Parent
 }
