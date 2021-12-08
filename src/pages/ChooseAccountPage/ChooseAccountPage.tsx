@@ -14,7 +14,7 @@ export const ChooseAccountPage = () => {
 
     const renderAccounts = () => {
         return accounts.map(({ accountName, accountNumber, balance }) => {
-            return <AccountCard accountName={accountName} accountNumber={accountNumber} balance={balance} onClick={handleOnClick} selected={selectedId === accountName} />
+            return <AccountCard key={accountName} accountName={accountName} accountNumber={accountNumber} balance={balance} onClick={handleOnClick} selected={selectedId === accountName} />
         })
     }
 
@@ -30,17 +30,17 @@ export const ChooseAccountPage = () => {
             <div className={styles.accounts}>
                 {renderAccounts()}
             </div>
-            <div className={styles.continueWrapper}>
-                <div className={styles.agreement}>
-                    <input type="checkbox" className={styles.checkbox} />
-                    <span className={styles.agreement__text}>Я прочитал соглашение, все понимаю и принимаю все риски</span>
-                </div>
-                <div className={styles.readyButton}>
-                    <CustomButton>
-                        <Link to="/wallets-add">Готово</Link>
-                    </CustomButton>
-                </div>
-            </div>
+            {
+                selectedId && (<div className={styles.continueWrapper}>
+                    <div className={styles.agreement}>
+                        <input type="checkbox" className={styles.checkbox} />
+                        <span className={styles.agreement__text}>Я прочитал соглашение, все понимаю и принимаю все риски</span>
+                    </div>
+                    <div className={styles.readyButton}>
+                        <Link to="/wallets-add"><CustomButton text="Готово" /></Link>
+                    </div>
+                </div>)
+            }
         </div>
     )
 }

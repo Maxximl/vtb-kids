@@ -1,0 +1,87 @@
+.container {
+    flex: 1;
+    color: #b4b6b8;
+    padding: 80px 20px 0;
+    font-family: Mulish, sans-serif;
+    background: #FFFFFF;
+}
+
+.header {
+    font-size: 21px;
+    color: #24292E;
+    margin: 0;
+}
+
+.row {
+    margin-top: 23px;
+}
+
+.label {
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.hint {
+    margin-top: 12px;
+    color: #767676;
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+}
+
+.sectionHeader {
+   color: #24292E;
+   font-size: 18px;
+   font-weight: 700;
+   font-family: Mulish, sans-serif;
+}
+
+.labels {
+    display: flex;
+}
+
+.label_selectable {
+    color: #767676;
+    margin-right: 19px;
+    width: 98px;
+}
+
+.periodTab_selected {
+    color: #000000;
+}
+
+.extraRow {
+    margin-top: 9px
+}
+
+.miniSection__header {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+
+}
+
+.miniSection__description {
+    font-size: 12px;
+    font-family: Inter, sans-serif;
+    color: #767676;
+}
+
+.needPlastic {
+    display: flex;
+    margin-top: 17px;
+    
+}
+.needPlastic__checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 30px;
+    border: 1px solid #150266;
+    margin-top: 6px;
+}
+
+.orderCardButton {
+    margin-top: 43px;
+    color: #F1F2F6;
+}

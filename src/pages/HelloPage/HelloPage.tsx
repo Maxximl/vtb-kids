@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSwipeable } from 'react-swipeable';
 import styles from "./HelloPage.module.css";
 import { CustomButton } from "../../components/CustomButton/CustomButton";
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import API from '../../utils/API';
 
+const MAX_PAGES = 1;
 export const HelloPage = () => {
 
     // useEffect(() => {
@@ -28,10 +28,14 @@ export const HelloPage = () => {
     const handlers = useSwipeable({
         onSwipedLeft: () => {
             console.log('swiped');
-            setCurrPage(currPage + 1);
+            if (currPage < MAX_PAGES) {
+                setCurrPage(currPage + 1);
+            }
         }, onSwipedRight: () => {
             console.log('swipedRight');
-            setCurrPage(currPage - 1);
+            if (currPage > 0) {
+                setCurrPage(currPage - 1);
+            }
         }
     })
     const [currPage, setCurrPage] = useState<number>(0);
@@ -60,18 +64,15 @@ export const HelloPage = () => {
                 {renderDots(5)}
             </div>
             <div className={styles.continueButton}>
-                <CustomButton text="" >
-                    <Link to="/login">Понятно, поехали</Link>
-                </CustomButton>
+
+                <Link to="/login"><CustomButton text="Понятно, поехали" /></Link>
             </div>
 
             <div className={styles.noAccMessage}>
                 Нет аккаунта ВТБ?
             </div>
             <div className={styles.createAccButton}>
-                <CustomButton color="rgba(255, 255, 255, 0.2)" >
-                    Создать аккаунт ВТБ
-                </CustomButton>
+                <CustomButton text="Создать аккаунт ВТБ" color="rgba(255, 255, 255, 0.2)" />
             </div>
         </div>)]
     return (

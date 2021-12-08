@@ -9,14 +9,17 @@
 .header {
     font-size: 21px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
+    color: #24292E;
 }
 
+.continueWrapper {
+    margin-top: 76px;
+}
 .agreement {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 76px;
 }
 
 .checkbox {

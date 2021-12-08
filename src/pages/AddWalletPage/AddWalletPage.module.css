@@ -1,0 +1,50 @@
+.container {
+    flex: 1;
+    color: #F1F2F6;
+    font-family: Mulish, sans-serif;
+    background: #FFFFFF;
+}
+
+.header {
+    font-size: 28px;
+    height: 210px;
+    padding-top: 87px;
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+}
+
+h2 {
+    font-size: 28px;
+    height: 40px; 
+    color: #F1F2F6;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.content {
+flex: 1;
+padding: 16px;
+
+}
+
+
+.content__instruction {
+    padding: 16px;
+    color: #9E9E9E;
+    font-size: 12px;
+    border: 1px solid #C6C6C6;
+    border-radius: 17px;
+    height: 336px;
+}
+
+.content__instruction p{
+    line-height: 15px;
+}
+
+.createButton {
+    margin-top: 20px;
+}
+
+.createButton a {
+    margin-top: 20px;
+    color: #F1F2F6;
+}

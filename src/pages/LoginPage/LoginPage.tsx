@@ -1,4 +1,3 @@
-import { style } from '@mui/system';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
@@ -18,18 +17,14 @@ export const LoginPage = () => {
                 <CustomInput label="Телефон" />
             </div>
             <div className={styles.getCode}>
-                <CustomButton color="#150266">
-                    Получить код
-                </CustomButton>
+                <CustomButton text="Получить код" color="#150266" />
             </div>
             <div className={styles.smsCode}>
                 <div className={styles.smsCode__caption}>Код из СМС</div>
                 <CustomInput label="Код из СМС" />
             </div>
             <div className={styles.continue}>
-                <CustomButton>
-                    <Link to="/choose-acc">Понятно, поехали</Link>
-                </CustomButton>
+                <Link to="/choose-acc"> <CustomButton text="Понятно, поехали" /></Link>
             </div>
         </div>
     )

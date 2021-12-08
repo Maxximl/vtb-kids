@@ -13,6 +13,8 @@ import { WalletsPage } from './pages/WalletsPage/WalletsPage';
 import { HelloPage } from './pages/HelloPage/HelloPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { ChooseAccountPage } from './pages/ChooseAccountPage/ChooseAccountPage';
+import { AddWalletPage } from './pages/AddWalletPage/AddWalletPage';
+import { AddNewCardPage } from './pages/AddNewCardPage/AddNewCardPage';
 const auth = false;
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
                 <Route path="/" element={<HelloPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/choose-acc" element={<ChooseAccountPage />} />
-                <Route path="/wallets-add" element={<WalletsPage />} />
+                <Route path="/wallets-add" element={<AddWalletPage />} />
+                <Route path="/add-card" element={<AddNewCardPage />} />
               </Routes>
             )
           }
