@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import API from "../../utils/API";
+import API from "../../utils/axios";
 import { FetchWalletsError, IWallet } from "./wallets.types";
 
 export const fetchWallets = createAsyncThunk<IWallet[], number, { rejectValue: FetchWalletsError }>(

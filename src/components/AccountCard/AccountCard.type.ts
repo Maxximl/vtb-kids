@@ -1,7 +1,6 @@
-export interface IAccountCardProps {
-    accountName: string;
-    accountNumber: string;
-    balance: number;
+import { IProduct } from "../../utils/API.types";
+
+export interface IAccountCardProps extends IProduct {
     selected?: boolean;
     onClick: (accountName: string) => void;
 }

@@ -1,4 +1,4 @@
-.container {
+/* .container {
     height: 100%;
     width: 100%;
     background-color: #3C79D2;
@@ -22,4 +22,26 @@
 .cards__list > div:first-child {
     margin-top: 0px;
     height: 330px;
+} */
+
+.container {
+    flex: 1;
+    color: #F1F2F6;
+    font-family: Mulish, sans-serif;
+    background: #ECECEC;
+}
+
+.header {
+    font-size: 28px;
+    height: 210px;
+    padding-top: 87px;
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+}
+
+h2 {
+    font-size: 28px;
+    height: 40px; 
+    color: #F1F2F6;
+    font-weight: 700;
+    margin-left: 20px;
 }

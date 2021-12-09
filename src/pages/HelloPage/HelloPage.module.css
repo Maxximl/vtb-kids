@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+    height: 100%;
 }
 
 .page {
@@ -12,6 +13,15 @@
     align-items: center;
     color: #F1F2F6;
     font-family: Inter, sans-serif;
+    height: 100%;
+    flex: 1;
+}
+
+.pageWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {

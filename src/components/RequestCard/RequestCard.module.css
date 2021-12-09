@@ -1,0 +1,25 @@
+.container {
+display: flex;
+justify-content: space-between;
+font-family: Mulish, sans-serif;
+align-items: flex-start;
+margin-top: 26px;
+}
+
+.name {
+    font-size: 18px;
+    color: #24292E;
+    font-weight: 700;
+}
+
+.type {
+    font-size: 11px;
+    color: #767676;
+    font-weight: 700;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 7px;
+}

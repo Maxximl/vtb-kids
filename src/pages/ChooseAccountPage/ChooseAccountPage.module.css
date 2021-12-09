@@ -39,8 +39,15 @@
 
 .readyButton {
     margin-top: 13px;
+    color: #F1F2F6;
 }
 
-.readyButton a {
-    color: #F1F2F6
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
 }

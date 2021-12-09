@@ -1,5 +1,5 @@
 export enum RefillPeriod {
-    Month,
-    Week
+    Month = 30,
+    Week = 7
 
 }

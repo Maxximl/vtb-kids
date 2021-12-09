@@ -1,25 +1,55 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { AccountCard } from '../../components/AccountCard/AccountCard';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
+import { RootState } from '../../store/store';
+import { getUserProducts } from '../../store/user/user.thunk';
+import { setMainProduct } from '../../utils/API';
+import { IProduct } from '../../utils/API.types';
 import styles from "./ChooseAccountPage.module.css";
+import spinner from "../../assets/spinner.gif";
 
-const accounts = [
-    { accountName: "Visa Classic", accountNumber: "1122...9999", balance: 190060 },
-    { accountName: "Visa Hihua", accountNumber: "1122...9900", balance: 8.17 }
-]
+
+
 export const ChooseAccountPage = () => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [selectedId, setSeletedId] = useState<string>("");
+    const { userId, products } = useSelector((state: RootState) => {
 
-    const renderAccounts = () => {
-        return accounts.map(({ accountName, accountNumber, balance }) => {
-            return <AccountCard key={accountName} accountName={accountName} accountNumber={accountNumber} balance={balance} onClick={handleOnClick} selected={selectedId === accountName} />
+        return { userId: state.user.id, products: state.user.products };
+    })
+
+    useEffect(() => {
+        if (userId) {
+            dispatch(getUserProducts(userId));
+        }
+    }, [userId])
+
+    useEffect(() => {
+
+    }, [selectedId])
+
+    const renderProducts = (products: IProduct[]) => {
+        return products.map((product) => {
+            return <AccountCard key={product.public_id} {...product} onClick={handleOnClick} selected={selectedId === product.public_id} />
         })
     }
 
-    const handleOnClick = (accountName: string) => {
-        setSeletedId(accountName);
+    const handleOnClick = (id: string) => {
+        setSeletedId(id);
+    }
+
+    const handleOnSetMainProduct = async () => {
+        try {
+            const response = await setMainProduct(selectedId);
+            if (response === "ok") {
+                navigate("/wallets-add")
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (
@@ -28,7 +58,7 @@ export const ChooseAccountPage = () => {
                 Выберите основной счет
             </h2>
             <div className={styles.accounts}>
-                {renderAccounts()}
+                {products.length ? renderProducts(products) : <div className={styles.spinnerContainer}><img className={styles.spinner} src={spinner} alt="spinner" /></div>}
             </div>
             {
                 selectedId && (<div className={styles.continueWrapper}>
@@ -37,7 +67,7 @@ export const ChooseAccountPage = () => {
                         <span className={styles.agreement__text}>Я прочитал соглашение, все понимаю и принимаю все риски</span>
                     </div>
                     <div className={styles.readyButton}>
-                        <Link to="/wallets-add"><CustomButton text="Готово" /></Link>
+                        <CustomButton text="Готово" onClick={handleOnSetMainProduct} />
                     </div>
                 </div>)
             }

@@ -1,4 +1,5 @@
 .app {
+  min-height: -webkit-fill-available;
   height: 100vh;
   background-color: #e3eaf6;
   display: flex;

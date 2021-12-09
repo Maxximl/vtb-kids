@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import styles from "./CustomInput.module.css";
 import { ICustomInputProps } from './CustomInput.types';
 
-export const CustomInput: React.FC<ICustomInputProps> = ({ label }) => {
-
+export const CustomInput: React.FC<ICustomInputProps> = (props) => {
+    const { label, value } = props
     const [focused, setFocused] = useState<boolean>(false);
-    const [value, setValue] = useState<string>("");
     const inputRef = React.useRef<HTMLInputElement>(null)
 
     const handleOnFocus: React.FocusEventHandler<HTMLInputElement> | undefined = (e) => {
@@ -20,12 +19,8 @@ export const CustomInput: React.FC<ICustomInputProps> = ({ label }) => {
         inputRef.current?.focus();
     }
 
-    const handleOnChange: React.ChangeEventHandler<HTMLInputElement> | undefined = (e) => {
-        setValue(e.target.value);
-    }
-
     const getLabelClass = () => {
-        if (value || focused) {
+        if (value != null || focused) {
             return styles.focused;
         } else {
             return ""
@@ -34,7 +29,7 @@ export const CustomInput: React.FC<ICustomInputProps> = ({ label }) => {
     return (
         <div className={styles.container} onClick={handleOnClick}>
             {<label className={getLabelClass()}>{label}</label>}
-            <input ref={inputRef} type="text" onFocus={handleOnFocus} onBlur={handleOnBlur} value={value} onChange={handleOnChange} />
+            <input {...props} ref={inputRef} type="text" onFocus={handleOnFocus} onBlur={handleOnBlur} />
         </div>
     )
 }

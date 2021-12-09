@@ -1,0 +1,35 @@
+.container {
+    flex: 1;
+    color: #b4b6b8;
+    padding: 80px 20px 0;
+    font-family: Mulish, sans-serif;
+    background: #FFFFFF;
+}
+
+.header {
+    font-size: 21px;
+    color: #24292E;
+    margin: 0;
+}
+
+.cardTemplate {
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+    border-radius: 20px;
+    width: 335px;
+    height: 190px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 37px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.goToWalletButton  {
+    margin-top: 93px;
+}
+
+.goToWalletButton a {
+    color: #F1F2F6;
+}

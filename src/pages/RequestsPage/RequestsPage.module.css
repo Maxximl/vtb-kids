@@ -1,0 +1,13 @@
+.container {
+    flex: 1;
+    color: #b4b6b8;
+    padding: 80px 20px 0;
+    font-family: Mulish, sans-serif;
+    background: #FFFFFF;
+}
+
+.header {
+    font-size: 21px;
+    color: #24292E;
+    margin: 0;
+}

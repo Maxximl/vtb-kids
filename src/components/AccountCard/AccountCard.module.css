@@ -5,7 +5,7 @@
     font-weight: 600;
     margin-bottom: 24px;
     box-sizing: border-box;
-    padding: 10px 11px 10px 4px;
+    padding: 10px 0px 10px 4px;
     border-radius: 7px;
     border: 1px solid transparent;
 }
@@ -25,6 +25,8 @@
     background: #C4C4C4;
     margin-right: 19px;
     margin-top: 5px;
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+border-radius: 5px;
 }
 
 .cardInfo__name {

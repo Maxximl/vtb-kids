@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import walletsReducer from './wallets/wallets.slice';
+import userReducer from "./user/user.slice";
 
 export const store = configureStore({
   reducer: {
-    wallets: walletsReducer
+    wallets: walletsReducer,
+    user: userReducer
   },
 })
 

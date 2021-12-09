@@ -52,7 +52,9 @@ export const HelloPage = () => {
     }
     const pages = [(
         <div className={styles.page}>
-            <h1>Привет!</h1>
+            <div className={styles.pageWrapper}>
+                <h1>Привет!</h1>
+            </div>
         </div>
     ),
     (

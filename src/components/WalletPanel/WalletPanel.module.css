@@ -1,0 +1,23 @@
+.header {
+    height: 128px;
+    box-shadow: 0px 2px 2px rgba(177, 177, 177, 0.1);
+    border-radius: 10px;
+    background: #FFFFFF;
+    position: relative;
+    margin: 0 12px 8px 5px;
+}
+
+.avatar {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: -30px;
+}
+
+.refillButton {
+    color: #24292E;
+}
+
+.createMoneyBoxButton {
+    color: #24292E;
+}
