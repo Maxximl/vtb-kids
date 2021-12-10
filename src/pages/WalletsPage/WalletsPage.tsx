@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { WalletCard } from '../../components/WalletCard/WalletCard';
 import { AppDispatch, RootState } from '../../store/store';
@@ -14,6 +14,7 @@ import { IWalletInfoResponse } from '../../utils/API.types';
 import { getWallets } from '../../store/user/user.thunk';
 import spinner from "../../assets/spinner.gif";
 import plus from "../../assets/plus.png";
+import { AuthContext } from '../../context/authContext';
 
 export const WalletsPage = () => {
     // const dispatch = useDispatch<AppDispatch>();
@@ -41,13 +42,19 @@ export const WalletsPage = () => {
     //         </div>
     //     </div>
     // )
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+    const { logout } = useContext(AuthContext);
+
     const { userId, wallets } = useSelector((state: RootState) => {
         return { userId: state.user.id, wallets: state.user.wallets };
     })
 
     const getAllWallets = async () => {
-        await dispatch(getWallets(userId));
+        try {
+            await dispatch(getWallets(userId));
+        } catch (error) {
+            logout();
+        }
     }
 
     useEffect(() => {

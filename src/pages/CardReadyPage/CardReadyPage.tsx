@@ -1,15 +1,28 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
 import { CustomCheckbox } from '../../components/CustomCheckbox/CustomCheckbox';
 import styles from "./CardReadyPage.module.css";
 import check from "../../assets/check.svg";
 import { usePages } from '../../hooks/usePages';
+import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
+import { IOfficeResponse } from '../../utils/API.types';
+import { OfficesCard } from '../../components/OfficesCard/OfficesCard';
 
 export const CardReadyPage = () => {
     const navigate = useNavigate();
+    const params = useParams();
+    const request = useSelector((state: RootState) => {
+        return state.user.requests.find(request => String(request.id) === params.id) || null;
+    })
     const { renderDots, handlers, currPage, handleSetCurrentPage } = usePages(1);
 
+    const renderOffices = (offices: IOfficeResponse[] | undefined) => {
+        return offices?.map(office => {
+            return <OfficesCard key={office.human_address} {...office} />
+        })
+    }
 
     const pages = [
         (<div className={styles.innerPage}><div className={styles.cardTemplate}></div>
@@ -30,13 +43,12 @@ export const CardReadyPage = () => {
                 <div className={styles.extra}>
                     <span>Прийти в отделение ВТБ
                         с паспортом</span>
-                    <div className={styles.offices}>
+                    {request?.offices && <div className={styles.offices}>
                         <span className={styles.offices__caption}>Отделения ВТБ поблизости: </span>
                         <ul className={styles.offices__list}>
-                            <li>к1805, Зеленоград, Россия <br /> пн-пт 09:00–19:00; сб 10:00–17:00 <br /><a>Посмотреть на Яндекс.Картах</a></li>
-                            <li>к401, Зеленоград, Россия <br /> пн-пт 09:00–20:00; сб 10:00–17:00 <br /> <a>Посмотреть на Яндекс.Картах</a></li>
+                            {renderOffices(request?.offices)}
                         </ul>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className={styles.row__check}><img className={styles.check} src={check} alt="" /><p>Получить карту</p></div></div>)]

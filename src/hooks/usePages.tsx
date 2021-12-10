@@ -29,7 +29,7 @@ export const usePages = (maxPages: number) => {
         for (let i = 0; i < length; i++) {
             const isCurrent = i === currPage;
             dots.push(
-                (<div className={cn(styles.dot, isCurrent ? styles.current : "")} onClick={handleSetCurrentPage(i)}></div>)
+                (<div key={i} className={cn(styles.dot, isCurrent ? styles.current : "")} onClick={handleSetCurrentPage(i)}></div>)
             )
         }
         return dots;

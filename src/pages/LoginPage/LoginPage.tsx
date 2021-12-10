@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
 import { CustomInput } from '../../components/CustomInput/CustomInput';
+import { AuthContext } from '../../context/authContext';
+import { AppDispatch } from '../../store/store';
 import { userLogin } from '../../store/user/user.thunk';
+import { ILoginResponse } from '../../utils/API.types';
 import styles from "./LoginPage.module.css";
 
 export const LoginPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+    const { login } = useContext(AuthContext);
 
     const [phone, setPhone] = useState<string>("79201234567");
     const [vcode, setVcode] = useState<string>("6445");
     const [codeSent, setCodeSent] = useState<boolean>(false);
 
-    const handleOnLogin = () => {
-        dispatch(userLogin({ phone, vcode }));
+    const handleOnLogin = async () => {
+        const response = (await dispatch(userLogin({ phone, vcode }))).payload as ILoginResponse;
+        login(response.auth_token, response.id);
     }
 
     return (

@@ -15,11 +15,11 @@ const translationMap: ITranslationMap = {
     APPROVED: { displayName: "Карта готова", color: "#00B76A" },
     REJECTED: { displayName: "Отклонена", color: "#da2525" }
 }
-export const RequestCard: React.FC<IRequestCardProps> = ({ name_on_card, card_type, state }) => {
+export const RequestCard: React.FC<IRequestCardProps> = ({ name_on_card, card_type, state, id }) => {
     const navigate = useNavigate();
 
     const handleOnRequestClick = () => {
-        navigate("/card-ready");
+        navigate(`/card-ready/${id}`);
     }
 
     return (

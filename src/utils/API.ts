@@ -6,28 +6,48 @@ export const login = async (data: ILoginRequest) => {
     return response.data;
 }
 
-export const getProducts = async (userId: string) => {
-    const response = await axios.get(`/api/products/${userId}`)
+export const getProducts = async (userId: string, token: string) => {
+    const response = await axios.get(`/api/products/${userId}`, {
+        headers: {
+            "auth_token": token
+        }
+    })
     return response.data;
 }
 
-export const setMainProduct = async (productId: string) => {
-    const response = await axios.post("/api/product/setmain", { product_id: productId });
+export const setMainProduct = async (productId: string, token: string) => {
+    const response = await axios.post("/api/product/setmain", { product_id: productId }, {
+        headers: {
+            "auth_token": token
+        }
+    });
     return response.data;
 }
 
-export const createRequestOnCard = async (data: ICreateRequestOnCard) => {
-    const response = await axios.post("/api/request/add", data);
+export const createRequestOnCard = async (data: ICreateRequestOnCard, token: string) => {
+    const response = await axios.post("/api/request/add", data, {
+        headers: {
+            "auth_token": token
+        }
+    });
     return response.data;
 }
 
-export const getAllCardRequests = async (userId: string): Promise<IRequestedCardResonse> => {
-    const response = await axios.get(`/api/requests/${userId}`);
+export const getAllCardRequests = async (userId: string, token: string): Promise<IRequestedCardResonse> => {
+    const response = await axios.get(`/api/requests/${userId}`, {
+        headers: {
+            "auth_token": token
+        }
+    });
     return response.data;
 }
 
-export const fetchWallets = async (userId: string) => {
-    const response = await axios.get(`/api/wallets/${userId}`);
+export const fetchWallets = async (userId: string, token: string) => {
+    const response = await axios.get(`/api/wallets/${userId}`, {
+        headers: {
+            "auth_token": token
+        }
+    });
     console.log(response.data);
-    return response.data;
+    return response;
 }

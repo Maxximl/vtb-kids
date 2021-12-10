@@ -1,11 +1,12 @@
-import { IProduct, IProductsResponse, IWalletInfoResponse } from "../../utils/API.types";
+import { IProduct, IProductsResponse, IRequestedCard, IRequestedCardResonse, IWalletInfoResponse } from "../../utils/API.types";
 
 export interface IUserState {
     auth_token: string,
     display_name: string,
     id: string,
-    "products": IProduct[];
+    products: IProduct[];
     wallets: IWalletInfoResponse[];
+    requests: IRequestedCard[]
 }
 
 
@@ -23,4 +24,9 @@ export interface ISetProducts {
 export interface ISetWallets {
     id: string;
     wallets: IWalletInfoResponse[];
+}
+
+export interface ISetRequests {
+    id: string;
+    requests: IRequestedCard[];
 }

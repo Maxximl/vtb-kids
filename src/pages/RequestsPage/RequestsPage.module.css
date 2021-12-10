@@ -11,3 +11,13 @@
     color: #24292E;
     margin: 0;
 }
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}

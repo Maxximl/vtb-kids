@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from "./RequestsPage.module.css";
 import { RequestCard } from '../../components/RequestCard/RequestCard'
 import { IRequestedCard } from '../../utils/API.types';
-import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
-import { getAllCardRequests } from '../../utils/API';
-
+import { AppDispatch, RootState } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AuthContext } from '../../context/authContext';
+import spinner from "../../assets/spinner.gif";
+import { getRequests } from '../../store/user/user.thunk';
 
 export const RequestsPage = () => {
-    const userId = useSelector((state: RootState) => {
-        return state.user.id;
+    const { logout, token } = useContext(AuthContext);
+    const dispatch = useDispatch<AppDispatch>();
+    const { userId, requests } = useSelector((state: RootState) => {
+        return { userId: state.user.id, requests: state.user.requests };
     })
-    const [requests, setRequests] = useState<IRequestedCard[]>([]);
 
-    const getRequests = async () => {
-        try {
-            const response = await getAllCardRequests(userId);
-            if (response?.requests) {
-                setRequests(response.requests);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
+    const getAllRequests = async () => {
+        await dispatch(getRequests(userId));
     }
     useEffect(() => {
-        getRequests();
+        if (userId) {
+            getAllRequests();
+        }
     }, [userId])
 
     const renderRequests = (requests: IRequestedCard[]) => {
+        if (!requests.length) {
+            return <div className={styles.spinnerContainer}><img className={styles.spinner} src={spinner} alt="spinner" /></div>
+        }
         return requests.map((request) => {
             return <RequestCard key={request.id} {...request} />
         })

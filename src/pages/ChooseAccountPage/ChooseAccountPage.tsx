@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AccountCard } from '../../components/AccountCard/AccountCard';
@@ -9,12 +9,15 @@ import { setMainProduct } from '../../utils/API';
 import { IProduct } from '../../utils/API.types';
 import styles from "./ChooseAccountPage.module.css";
 import spinner from "../../assets/spinner.gif";
+import { AuthContext } from '../../context/authContext';
 
 
 
 export const ChooseAccountPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { logout, token } = useContext(AuthContext);
+
     const [selectedId, setSeletedId] = useState<string>("");
     const { userId, products } = useSelector((state: RootState) => {
 
@@ -43,12 +46,13 @@ export const ChooseAccountPage = () => {
 
     const handleOnSetMainProduct = async () => {
         try {
-            const response = await setMainProduct(selectedId);
+            const response = await setMainProduct(selectedId, token);
             if (response === "ok") {
                 navigate("/wallets-add")
             }
         } catch (error) {
             console.error(error);
+            logout();
         }
     }
 

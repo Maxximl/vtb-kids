@@ -50,6 +50,14 @@ export interface IRequestedCard {
     "id": number;
     "name_on_card": string;
     "state": RequestState;
+    "offices"?: IOfficeResponse[];
+}
+
+export interface IOfficeResponse {
+    "hours": string;
+    "human_address": string;
+    "link": string;
+    "name": string;
 }
 
 export interface IRequestedCardResonse {

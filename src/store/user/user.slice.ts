@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ILogin, ISetProducts, ISetWallets, IUserState } from './user.types'
+import { ILogin, ISetProducts, ISetRequests, ISetWallets, IUserState } from './user.types'
 
 
 const initialState: IUserState = {
@@ -7,7 +7,8 @@ const initialState: IUserState = {
     display_name: "",
     id: "",
     products: [],
-    wallets: []
+    wallets: [],
+    requests: []
 }
 
 export const userSlice = createSlice({
@@ -27,14 +28,15 @@ export const userSlice = createSlice({
         setWallets: (state, action: PayloadAction<ISetWallets>) => {
             const { wallets } = action.payload;
             state.wallets = wallets;
+        },
+        setRequests: (state, action: PayloadAction<ISetRequests>) => {
+            const { requests } = action.payload;
+            state.requests = requests;
         }
-        // logout: (state, action: PayloadAction<IAddWallets>) => {
-        //     state.wallets = action.payload.wallets;
-        // },
     }
 })
 
 // Action creators are generated for each case reducer function
-export const { loginSlice, setProducts, setWallets } = userSlice.actions
+export const { loginSlice, setProducts, setWallets, setRequests } = userSlice.actions
 
 export default userSlice.reducer

@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
 import { CustomInput } from '../../components/CustomInput/CustomInput';
+import { AuthContext } from '../../context/authContext';
 import { RootState } from '../../store/store';
 import { createRequestOnCard } from '../../utils/API';
 import { CardType } from '../../utils/API.types';
@@ -13,6 +14,8 @@ import { RefillPeriod } from './AddNewCard.types';
 const periodTabs = [{ id: 1, period: RefillPeriod.Month, caption: "В месяц" }, { id: 2, period: RefillPeriod.Week, caption: "В неделю" }];
 
 export const AddNewCardPage = () => {
+    const { logout, token } = useContext(AuthContext);
+
     const navigate = useNavigate();
     const userId = useSelector((state: RootState) => {
         return state.user.id;
@@ -72,16 +75,21 @@ export const AddNewCardPage = () => {
     }
 
     const handleOnCreateRequest = async () => {
-        await createRequestOnCard({
-            id: userId,
-            "name_on_card": nameOnCard,
-            "age": age,
-            "card_type": cardType,
-            "card_refill_amount": refillAmount,
-            "card_refill_interval": refillInterval,
-            "start_day_of_week": 1
-        })
-        navigate("/requests");
+        try {
+            await createRequestOnCard({
+                id: userId,
+                "name_on_card": nameOnCard,
+                "age": age,
+                "card_type": cardType,
+                "card_refill_amount": refillAmount,
+                "card_refill_interval": refillInterval,
+                "start_day_of_week": 1
+            }, token)
+            navigate("/requests");
+        } catch (error) {
+            console.error(error);
+            logout();
+        }
     }
     return (
         <div className={styles.container}>
