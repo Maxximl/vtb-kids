@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import API from "../../utils/axios";
 import { FetchWalletsError, IWallet } from "./wallets.types";
 
-export const fetchWallets = createAsyncThunk<IWallet[], number, { rejectValue: FetchWalletsError }>(
+export const fetchWallets1 = createAsyncThunk<IWallet[], number, { rejectValue: FetchWalletsError }>(
     "wallets/fetch",
     async (limit: number, thunkApi) => {
         // Fetch the backend endpoint:

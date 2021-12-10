@@ -4,12 +4,22 @@
     padding: 80px 20px 0;
     font-family: Mulish, sans-serif;
     background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
 }
 
+.content {
+    min-height: 500px;
+    max-height: 500px;
+    position: relative;
+}
 .header {
     font-size: 21px;
     color: #24292E;
     margin: 0;
+    font-weight: 700;
+    height: 40px;
+    margin-bottom: 18px;
 }
 
 .cardTemplate {
@@ -18,8 +28,6 @@
     width: 335px;
     height: 190px;
     border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 37px;
 }
 
 .row {
@@ -27,9 +35,60 @@
 }
 
 .goToWalletButton  {
-    margin-top: 93px;
 }
 
 .goToWalletButton a {
     color: #F1F2F6;
+}
+
+.caption {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Mulish, sans-serif;
+    color: #24292E;
+}
+
+.row__check {
+    display: flex;
+    align-items: flex-start;
+    color: #24292E;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+}
+
+.check {
+    margin-right: 37px;
+    margin-top: 10px;
+}
+
+.offices__caption {
+    font-size: 12px;
+    font-family: Mulish, sans-serif;
+}
+
+.offices {
+    font-size: 12px;
+    font-family: Mulish;
+}
+
+.offices__list {
+
+}
+
+.toWalletsButton {
+    /* margin-top: 271px; */
+    color: #F1F2F6;
+}
+
+.innerPage {
+  min-height: 400px;
+}
+
+.stepProgress {
+    height: 80px;
+    justify-content: center;
+    top: 0;
+    display: flex;
+    align-items: center;
 }

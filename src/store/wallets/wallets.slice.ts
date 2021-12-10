@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchWallets } from './wallets.thunk'
+import { fetchWallets1 } from './wallets.thunk'
 import { IAddWallet, IAddWallets, IRemoveWallet, IWalletsState } from './wallets.types'
 
 
@@ -27,7 +27,7 @@ export const walletsSlice = createSlice({
 
         // When we send a request,
         // `fetchTodos.pending` is being fired:
-        builder.addCase(fetchWallets.pending, (state) => {
+        builder.addCase(fetchWallets1.pending, (state) => {
             // At that moment,
             // we change status to `loading` 
             // and clear all the previous errors:
@@ -37,7 +37,7 @@ export const walletsSlice = createSlice({
 
         // When a server responses with the data,
         // `fetchTodos.fulfilled` is fired:
-        builder.addCase(fetchWallets.fulfilled,
+        builder.addCase(fetchWallets1.fulfilled,
             (state, { payload }) => {
                 // We add all the new todos into the state
                 // and change `status` back to `idle`:
@@ -46,7 +46,7 @@ export const walletsSlice = createSlice({
             });
 
         // When a server responses with an error:
-        builder.addCase(fetchWallets.rejected,
+        builder.addCase(fetchWallets1.rejected,
             (state, { payload }) => {
                 // We show the error message
                 // and change `status` back to `idle` again.

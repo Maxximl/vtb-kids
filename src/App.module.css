@@ -4,6 +4,8 @@
   background-color: #e3eaf6;
   display: flex;
   flex-direction: column;
+  max-width: 375px;
+  margin: 0 auto;
 }
 
 

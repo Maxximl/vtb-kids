@@ -25,3 +25,9 @@ export const getAllCardRequests = async (userId: string): Promise<IRequestedCard
     const response = await axios.get(`/api/requests/${userId}`);
     return response.data;
 }
+
+export const fetchWallets = async (userId: string) => {
+    const response = await axios.get(`/api/wallets/${userId}`);
+    console.log(response.data);
+    return response.data;
+}

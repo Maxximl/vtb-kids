@@ -20,7 +20,7 @@ export const CustomInput: React.FC<ICustomInputProps> = (props) => {
     }
 
     const getLabelClass = () => {
-        if (value != null || focused) {
+        if (value || value === 0 || focused) {
             return styles.focused;
         } else {
             return ""

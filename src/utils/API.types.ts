@@ -34,10 +34,10 @@ export interface IProductRequest {
 export interface ICreateRequestOnCard {
     "id": string;
     "name_on_card": string;
-    "age": number;
+    "age"?: number;
     "card_type": CardType;
-    "card_refill_amount": number;
-    "card_refill_interval": number;
+    "card_refill_amount"?: number;
+    "card_refill_interval"?: number;
     "start_day_of_week": number;
 }
 
@@ -66,4 +66,29 @@ export enum RequestState {
 export enum CardType {
     Virtual = "virtual",
     Plastic = "plastic"
+}
+
+export interface IWalletInfoResponse {
+    "balanceForecast": number;
+    "card_refill_amount": number;
+    "card_refill_interval": number;
+    "card_type": CardType;
+    "main_amount": number;
+    "moneyboxes_amount": number,
+    "name": string;
+    "name_on_card": string;
+    "products": IWalletProductResponse[],
+    "regularity": string,
+    "wallet_id": string
+}
+
+export enum ProductType {
+    MoneyBox = "MONEYBOX",
+    Card = "CARD"
+}
+export interface IWalletProductResponse {
+    "amount": number,
+    "masked_pan": string,
+    "product_id": string,
+    "product_type": ProductType,
 }

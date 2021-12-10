@@ -1,0 +1,20 @@
+
+.dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: rgb(175 118 118 / 20%);
+    margin-right: 9px;
+}
+
+.dot.current {
+background-color: #8791b9;;
+}
+
+.stepProgress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}

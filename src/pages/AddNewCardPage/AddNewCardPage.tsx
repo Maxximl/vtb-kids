@@ -19,9 +19,9 @@ export const AddNewCardPage = () => {
     })
 
     const [nameOnCard, setNameOnCard] = useState<string>("");
-    const [age, setAge] = useState<number>(0);
+    const [age, setAge] = useState<number>();
     const [refillInterval, setRefillInterval] = useState<RefillPeriod>(RefillPeriod.Month);
-    const [refillAmount, setRefillAmount] = useState<number>(0)
+    const [refillAmount, setRefillAmount] = useState<number>()
     const [cardType, setCardType] = useState<CardType>(CardType.Virtual);
 
     const handlePeriodTabClick = (period: RefillPeriod) => () => {
@@ -30,8 +30,12 @@ export const AddNewCardPage = () => {
 
 
     const handleOnRefillAmountChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        const value = event.target.value;
-        setRefillAmount(parseInt(value));
+        const value = parseInt(event.target.value);
+        if (Number.isNaN(value)) {
+            setRefillAmount(undefined);
+        } else {
+            setRefillAmount(value);
+        }
     }
 
     const periodInputs = {
@@ -51,8 +55,12 @@ export const AddNewCardPage = () => {
     }
 
     const handleOnAgeChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-        const value = event.target.value;
-        setAge(parseInt(value));
+        const value = parseInt(event.target.value);
+        if (Number.isNaN(value)) {
+            setAge(undefined);
+        } else {
+            setAge(value);
+        }
     }
     const renderPeriodTabs = (periodTabs: any[]) => {
         return periodTabs.map(({ caption, period, id }) => {
