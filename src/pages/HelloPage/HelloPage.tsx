@@ -45,7 +45,7 @@ export const HelloPage = () => {
         for (let i = 0; i < length; i++) {
             const isCurrent = i === currPage;
             dots.push(
-                (<div className={cn(styles.dot, isCurrent ? styles.current : "")}></div>)
+                (<div key={i} className={cn(styles.dot, isCurrent ? styles.current : "")}></div>)
             )
         }
         return dots;
@@ -53,7 +53,7 @@ export const HelloPage = () => {
     const pages = [(
         <div className={styles.page}>
             <div className={styles.pageWrapper}>
-                <h1>Привет!</h1>
+                <h1>CARLETS</h1>
             </div>
         </div>
     ),

@@ -6,7 +6,8 @@ export interface IUserState {
     id: string,
     products: IProduct[];
     wallets: IWalletInfoResponse[];
-    requests: IRequestedCard[]
+    requests: IRequestedCard[];
+    isAuth: boolean;
 }
 
 
@@ -29,4 +30,8 @@ export interface ISetWallets {
 export interface ISetRequests {
     id: string;
     requests: IRequestedCard[];
+}
+
+export interface ISetAuth {
+    isAuth: boolean;
 }

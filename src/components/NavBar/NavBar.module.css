@@ -1,13 +1,14 @@
 .container {
-    height: 50px;
+    height: 83px;
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
     align-items: center;
-    background-color: white;
+    background-color: #F9F9F9;
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: inset 0px 0.5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .container svg {

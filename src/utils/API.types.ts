@@ -100,3 +100,41 @@ export interface IWalletProductResponse {
     "product_id": string,
     "product_type": ProductType,
 }
+
+export interface ITransactionRequest {
+    "donor": string;
+    "acceptor": string;
+    "amount": number;
+}
+
+export interface IHistoryItem {
+    "amount": number;
+    "balance_after": number;
+    "comment": string;
+    "product_type": CardType;
+    "ts": string;
+    "type": TransferType;
+}
+
+export enum TransferType {
+    Init = "init",
+    Debit = "debit",
+    Credit = "credit"
+}
+
+export interface IHistoryResponse {
+    "history": IHistoryItem[];
+}
+
+export interface IProductHistoryResponse {
+    "history": IProductHistoryItem[];
+    "product_id": string;
+
+}
+
+export interface IProductHistoryItem {
+    "amount": number;
+    "balance_after": number;
+    "ts": string;
+    "type": TransferType;
+}

@@ -1,15 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { WalletCard } from '../../components/WalletCard/WalletCard';
 import { AppDispatch, RootState } from '../../store/store';
 import styles from "./WalletsPage.module.css";
-import avatarGirl from "./images/avatar_girl.png";
-import avatarBoy from "./images/avatar_boy.png";
-import avatarGrandmother from "./images/avatar_grandmother.png";
-import { TabsWrapper } from '../../components/TabsWrapper/TabsWrapper';
 import { WalletPanel } from '../../components/WalletPanel/WalletPanel';
-import { Link } from 'react-router-dom';
-import { fetchWallets } from '../../utils/API';
+import { Link, useNavigate } from 'react-router-dom';
 import { IWalletInfoResponse } from '../../utils/API.types';
 import { getWallets } from '../../store/user/user.thunk';
 import spinner from "../../assets/spinner.gif";
@@ -44,7 +38,7 @@ export const WalletsPage = () => {
     // )
     const dispatch = useDispatch<AppDispatch>();
     const { logout } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     const { userId, wallets } = useSelector((state: RootState) => {
         return { userId: state.user.id, wallets: state.user.wallets };
     })
@@ -70,7 +64,7 @@ export const WalletsPage = () => {
         }
 
         return wallets.map(wallet => {
-            return <WalletPanel key={wallet.wallet_id} {...wallet} />
+            return <WalletPanel key={wallet.wallet_id} {...wallet} onClick={() => { navigate(`/wallets/${wallet.wallet_id}`) }} />
         })
     }
     return (

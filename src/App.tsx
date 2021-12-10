@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBar } from './components/NavBar/NavBar';
 import {
   HashRouter,
@@ -19,15 +19,42 @@ import { RequestsPage } from './pages/RequestsPage/RequestsPage';
 import { CardReadyPage } from './pages/CardReadyPage/CardReadyPage';
 import { useAuth } from './hooks/useAuth';
 import { AuthContext } from './context/authContext';
-import { useSelector } from 'react-redux';
-import { RootState } from './store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from './store/store';
+import { checkAuth } from './store/user/user.thunk';
+import { storageKey } from './utils/axios';
+import spinner from "./assets/spinner.gif";
+import { WalletPage } from './pages/WalletPage/WalletPage';
 
 const auth = false;
 function App() {
+  const dispatch = useDispatch<AppDispatch>();
   const { token, login, logout, userId } = useAuth();
-  const tokenAuth = useSelector((state: RootState) => {
-    return state.user.auth_token;
+  const { isAuth } = useSelector((state: RootState) => {
+    return { isAuth: state.user.isAuth };
   })
+
+  const [isLoading, setLoading] = useState<boolean>(true);
+
+  const checkLogin = async () => {
+    if (localStorage.getItem(storageKey)) {
+      try {
+        setLoading(true);
+        await dispatch(checkAuth("1"));
+      } catch (error) {
+
+      }
+      finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    checkLogin();
+  }, [])
+
   return (
     <AuthContext.Provider value={{
       login,
@@ -37,31 +64,35 @@ function App() {
     }}>
       <HashRouter>
         <div className={styles.app}>
-          <div className={styles.pages}>
-            {
-              tokenAuth ? (
-                <Routes>
-                  <Route path="/" element={<WalletsPage />} />
-                  <Route path="/choose-acc" element={<ChooseAccountPage />} />
-                  <Route path="/wallets-add" element={<AddWalletPage />} />
-                  <Route path="/add-card" element={<AddNewCardPage />} />
-                  <Route path="/requests" element={<RequestsPage />} />
-                  <Route path="/ready" element={<CardReadyPage />} />
-                  <Route path="/wallets" element={<WalletsPage />} />
-                  <Route path="/card-ready/:id" element={<CardReadyPage />} />
-                  <Route path="*" element={<Navigate to="/choose-acc" />} />
-                </Routes>
-              ) : (
-                <Routes>
-                  <Route path="/" element={<HelloPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-              )
-            }
+          {isLoading && <div className={styles.spinnerContainer}><img className={styles.spinner} src={spinner} alt="spinner" /></div>}
+          {!isLoading && (
+            <><div className={styles.pages} style={{ marginBottom: !isAuth ? "0px" : "80px" }}>
+              {
+                isAuth ? (
+                  <Routes>
+                    <Route path="/" element={<WalletsPage />} />
+                    <Route path="/choose-acc" element={<ChooseAccountPage />} />
+                    <Route path="/wallets-add" element={<AddWalletPage />} />
+                    <Route path="/add-card" element={<AddNewCardPage />} />
+                    <Route path="/requests" element={<RequestsPage />} />
+                    <Route path="/ready" element={<CardReadyPage />} />
+                    <Route path="/wallets" element={<WalletsPage />} />
+                    <Route path="/wallets/:id" element={<WalletPage />} />
+                    <Route path="/card-ready/:id" element={<CardReadyPage />} />
+                    <Route path="*" element={<Navigate to="/choose-acc" />} />
+                  </Routes>
+                ) : (
+                  <Routes>
+                    <Route path="/" element={<HelloPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                  </Routes>
+                )
+              }
 
-          </div>
-          {auth && <NavBar />}
+            </div>
+              {isAuth && <NavBar />}</>
+          )}
         </div>
       </HashRouter>
     </AuthContext.Provider>

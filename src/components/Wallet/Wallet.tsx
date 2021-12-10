@@ -7,7 +7,6 @@ export const Wallet: React.FC<IWalletProps> = ({ avatar }) => {
     return (
         <div className={styles.container}>
             <div className={styles.avatar}>
-
                 <img className={styles.avatar__image} src={avatar} alt="" />
             </div>
             <div className="content">

@@ -1,6 +1,6 @@
 import { IProduct } from "../../utils/API.types";
 
 export interface IAccountCardProps extends IProduct {
-    selected?: boolean;
+    selected: boolean;
     onClick: (accountName: string) => void;
 }

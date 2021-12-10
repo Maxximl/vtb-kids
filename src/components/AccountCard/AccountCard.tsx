@@ -18,7 +18,7 @@ export const AccountCard: React.FC<IAccountCardProps> = ({ card_grade, masked, a
                     <div className={styles.cardInfo__number}>{masked}</div>
                 </div>
             </div>
-            <div className={styles.balance}><NumberFormat value={amount} displayType={'text'} thousandSeparator=" " suffix=" ₽" /></div>
+            <div className={styles.balance}><NumberFormat value={amount / 100} displayType={'text'} thousandSeparator=" " suffix=" ₽" /></div>
         </div>
     )
 }

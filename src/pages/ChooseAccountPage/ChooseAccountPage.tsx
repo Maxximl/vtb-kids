@@ -19,6 +19,7 @@ export const ChooseAccountPage = () => {
     const { logout, token } = useContext(AuthContext);
 
     const [selectedId, setSeletedId] = useState<string>("");
+    const [checked, setChecked] = useState<boolean>(false);
     const { userId, products } = useSelector((state: RootState) => {
 
         return { userId: state.user.id, products: state.user.products };
@@ -46,13 +47,14 @@ export const ChooseAccountPage = () => {
 
     const handleOnSetMainProduct = async () => {
         try {
-            const response = await setMainProduct(selectedId, token);
-            if (response === "ok") {
-                navigate("/wallets-add")
+            if (checked) {
+                const response = await setMainProduct(selectedId, token);
+                if (response === "ok") {
+                    navigate("/wallets-add")
+                }
             }
         } catch (error) {
             console.error(error);
-            logout();
         }
     }
 
@@ -67,11 +69,11 @@ export const ChooseAccountPage = () => {
             {
                 selectedId && (<div className={styles.continueWrapper}>
                     <div className={styles.agreement}>
-                        <input type="checkbox" className={styles.checkbox} />
+                        <input checked={checked} type="checkbox" className={styles.checkbox} onChange={(e) => setChecked(e.target.checked)} />
                         <span className={styles.agreement__text}>Я прочитал соглашение, все понимаю и принимаю все риски</span>
                     </div>
                     <div className={styles.readyButton}>
-                        <CustomButton text="Готово" onClick={handleOnSetMainProduct} />
+                        <CustomButton text="Готово" onClick={handleOnSetMainProduct} disabled={!checked} />
                     </div>
                 </div>)
             }

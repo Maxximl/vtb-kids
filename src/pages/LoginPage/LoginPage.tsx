@@ -11,15 +11,13 @@ import styles from "./LoginPage.module.css";
 
 export const LoginPage = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { login } = useContext(AuthContext);
 
     const [phone, setPhone] = useState<string>("79201234567");
     const [vcode, setVcode] = useState<string>("6445");
     const [codeSent, setCodeSent] = useState<boolean>(false);
 
     const handleOnLogin = async () => {
-        const response = (await dispatch(userLogin({ phone, vcode }))).payload as ILoginResponse;
-        login(response.auth_token, response.id);
+        await dispatch(userLogin({ phone, vcode }))
     }
 
     return (

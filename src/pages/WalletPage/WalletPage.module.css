@@ -1,0 +1,40 @@
+.container {
+    flex: 1;
+    color: #F1F2F6;
+    font-family: Mulish, sans-serif;
+    background: #ECECEC;
+    overflow: hidden;
+}
+
+.header {
+    font-size: 28px;
+    height: 210px;
+    padding-top: 87px;
+    background: linear-gradient(180deg, #150266 0%, #7615F9 100%);
+    display: flex;
+}
+
+.addIcon {
+    width: 30px;
+    height: 30px;
+    margin-left: 25px;
+
+}
+
+.content {
+    margin-top: -10px;
+    position: relative;
+    height: 100%;
+    
+}
+
+.products {
+    padding: 0 9px;
+}
+
+.operationStory {
+    height: 300px;
+    position: absolute;
+    width: 100%;
+    bottom: 200px;
+}

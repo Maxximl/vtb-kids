@@ -6,6 +6,7 @@
   flex-direction: column;
   max-width: 375px;
   margin: 0 auto;
+  width: 100%;
 }
 
 
@@ -16,7 +17,17 @@
 .pages {
   flex: 1;
   display: flex;
-  
+ width: 100%;
   overflow-y: scroll;
 }
 
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  margin: auto
+}
+.spinner {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
